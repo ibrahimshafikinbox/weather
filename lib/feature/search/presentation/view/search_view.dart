@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weather_app/feature/favorite/presentation/cubit/favorites_cubit.dart';
 import 'package:weather_app/feature/favorite/presentation/cubit/favorites_state.dart';
 import 'package:weather_app/feature/search/presentation/widget/city_search_field.dart';
+import 'package:weather_app/feature/search/presentation/widget/search_empty.dart';
+import 'package:weather_app/feature/search/presentation/widget/search_error.dart';
 import 'package:weather_app/feature/search/presentation/widget/weather_card.dart';
 import '../cubit/search_cubit.dart';
 import '../cubit/search_state.dart';
@@ -96,46 +98,9 @@ class SearchView extends StatelessWidget {
                             child: CircularProgressIndicator(),
                           );
                         } else if (searchState is SearchEmpty) {
-                          return Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.location_off,
-                                  size: 64.sp,
-                                  color: Colors.white38,
-                                ),
-                                SizedBox(height: 16.h),
-                                Text(
-                                  'No results found',
-                                  style: AppTextStyle.bodyText14.copyWith(
-                                    color: Colors.white70,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
+                          return SearchEmptyWidget();
                         } else if (searchState is SearchError) {
-                          return Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.error_outline,
-                                  size: 64.sp,
-                                  color: Colors.red,
-                                ),
-                                SizedBox(height: 16.h),
-                                Text(
-                                  searchState.failure.message,
-                                  style: AppTextStyle.bodyText14.copyWith(
-                                    color: Colors.red,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          );
+                          return SearchErrorWidget();
                         } else if (searchState is SearchLoaded) {
                           Set<String> favoriteKeys = {};
                           if (favState is FavoritesLoadedState) {

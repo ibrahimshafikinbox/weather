@@ -1,9 +1,7 @@
-// lib/core/network/api_client.dart
 import 'package:dio/dio.dart';
 import '../errors/failures.dart';
 
-/// API Client using Dio for network requests.
-/// Handles HTTP communication with proper error handling and response parsing.
+/// API Client usin g Dio for network requests.
 class ApiClient {
   final Dio dio;
 
