@@ -20,7 +20,7 @@ The app allows users to search for any city, view current weather conditions, an
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/<your-username>/weather_app.git
+git clone https://github.com/ibrahimshafikinbox/weather
 cd weather_app
 2️⃣ Install dependencies
 flutter pub get
